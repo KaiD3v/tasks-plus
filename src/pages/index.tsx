@@ -14,7 +14,7 @@ export default function Home() {
         <title>Tasks+ | Organize suas tarefas de maneira eficiente</title>
       </Head>
       <main className={styles.main}>
-        <div className={styles.LogoContent}>
+        <div className={styles.logoContent}>
           <Image
             className={styles.hero}
             alt="Logo Tasks+"
@@ -25,6 +25,14 @@ export default function Home() {
         <h1 className={styles.title}>
           Sistema feito para você organizar <br />seus estudos e tarefas
         </h1>
+      <div className={styles.infoContent}>
+        <section className={styles.box}>
+          <span>+12 posts</span>
+        </section>
+        <section className={styles.box}>
+          <span>+90 Comentários</span>
+        </section>
+      </div>
       </main>
     </div>
   );
