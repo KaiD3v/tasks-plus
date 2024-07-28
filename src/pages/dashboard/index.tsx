@@ -85,7 +85,7 @@ export default function Dashboard({ user }: HomeProps) {
 
   async function handleShare (id: string) {
     await navigator.clipboard.writeText(
-      `${process.env.NEXT_PUBLIC_URL}/task/${id}`
+      `${process.env.NEXT_PUBLIC_URL}/Task/${id}`
     )
 
     alert('A URL da tarefa foi copiada para a área de transferência.')
@@ -141,7 +141,7 @@ export default function Dashboard({ user }: HomeProps) {
               )}
               <div className={styles.taskContent}>
                 {task.public ? (
-                  <Link href={`/task/${task.id}`}>
+                  <Link href={`/Task/${task.id}`}>
                     <p>
                       {task.task}
                     </p>
