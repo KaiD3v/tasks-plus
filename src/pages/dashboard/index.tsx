@@ -7,7 +7,8 @@ import { FiShare2 } from "react-icons/fi";
 import { FaTrash } from "react-icons/fa";
 import { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import { db } from "../../services/firebaseConnection";
-import { addDoc, collection, query, orderBy, where, onSnapshot } from "firebase/firestore";
+import { addDoc, collection, query, orderBy, where, onSnapshot, doc, deleteDoc } from "firebase/firestore";
+import Link from "next/link";
 
 type HomeProps = {
   user: {
@@ -82,6 +83,20 @@ export default function Dashboard({ user }: HomeProps) {
     }
   }
 
+  async function handleShare (id: string) {
+    await navigator.clipboard.writeText(
+      `${process.env.NEXT_PUBLIC_URL}/task/${id}`
+    )
+
+    alert('A URL da tarefa foi copiada para a área de transferência.')
+  }
+
+  async function handleDeleteTask (id: string) {
+    const docRef = doc(db, "tasks", id)
+
+    await deleteDoc(docRef)
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -119,14 +134,24 @@ export default function Dashboard({ user }: HomeProps) {
               {task.public && (
                 <div className={styles.tagContainer}>
                   <label className={styles.tag}>PUBLICO</label>
-                  <button className={styles.shareButton}>
+                  <button className={styles.shareButton} onClick={() => handleShare(task.id)}>
                     <FiShare2 size={22} color="#3183ff" />
                   </button>
                 </div>
               )}
               <div className={styles.taskContent}>
-                <p>{task.task}</p>
-                <button className={styles.trashButton}>
+                {task.public ? (
+                  <Link href={`/task/${task.id}`}>
+                    <p>
+                      {task.task}
+                    </p>
+                  </Link>
+                ) : (
+                  <p>
+                    {task.task}
+                  </p>
+                )}
+                <button className={styles.trashButton} onClick={() => handleDeleteTask(task.id)}>
                   <FaTrash size={24} color="#ea3140" />
                 </button>
               </div>
