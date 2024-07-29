@@ -47,8 +47,13 @@
   padding: 12px 0;
   border-radius: 4px;
   border: 0;
-  color: #FFF;
+  color: #fff;
   cursor: pointer;
   background-color: #3183ff;
   font-size: 18px;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  background-color: rgba(49, 131, 255, 0.648);
 }
