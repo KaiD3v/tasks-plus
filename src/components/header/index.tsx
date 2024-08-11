@@ -19,7 +19,7 @@ export function Header() {
           </Link>
           {
             session?.user && (
-            <Link href={"/Dashboard"} className={styles.link}>
+            <Link href={"/dashboard"} className={styles.link}>
               Meu Painel
             </Link>
           )}
