@@ -57,3 +57,33 @@
   cursor: not-allowed;
   background-color: rgba(49, 131, 255, 0.648);
 }
+
+.comment {
+  border: 1px solid #ddd;
+  padding: 14px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+
+.comment p {
+  margin-top: 14px;
+  white-space: pre-wrap;
+}
+
+.headComment {
+  display: flex;
+  align-items: center;
+}
+
+.commentsLabel {
+  background-color: #ccc;
+  padding: 4px 8px;
+  margin-right: 8px;
+  border-radius: 4px;
+}
+
+.trashButton {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
